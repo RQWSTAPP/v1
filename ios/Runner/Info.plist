@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- ── App metadata ──────────────────────────────────────────────── -->
+    <key>CFBundleDevelopmentRegion</key>
+    <string>$(DEVELOPMENT_LANGUAGE)</string>
+    <key>CFBundleDisplayName</key>
+    <string>Rqwst</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>rqwst</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>$(FLUTTER_BUILD_NAME)</string>
+    <key>CFBundleSignature</key>
+    <string>????</string>
+    <key>CFBundleVersion</key>
+    <string>$(FLUTTER_BUILD_NUMBER)</string>
+
+    <!-- ── Orientation ───────────────────────────────────────────────── -->
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationPortraitUpsideDown</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+
+    <!-- ── Privacy permission strings ──────────────────────────────── -->
+
+    <!-- Microphone: voice notes + WebRTC calls -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>ركوست محتاج الميكروفون لتسجيل رسائل صوتية والمكالمات والأوامر الصوتية. Rqwst needs the microphone to record voice notes, make audio calls, and voice route commands.</string>
+
+    <!-- Speech recognition: voice route AI -->
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>ركوست يستخدم التعرف على الصوت لتحديد نقطة الانطلاق والوصول تلقائياً. Rqwst uses speech recognition to automatically detect pickup and dropoff from your voice.</string>
+
+    <!-- Camera: avatar + vehicle photos -->
+    <key>NSCameraUsageDescription</key>
+    <string>ركوست محتاج الكاميرا لتصوير مركبتك وصورة البروفايل. Rqwst needs the camera to take vehicle photos and profile pictures.</string>
+
+    <!-- Photo library: picking images -->
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>ركوست محتاج مكتبة الصور لاختيار صور المركبة وصورة البروفايل. Rqwst needs photo library access to pick vehicle and profile photos.</string>
+
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>ركوست محتاج الوصول لمكتبة الصور. Rqwst needs access to save photos.</string>
+
+    <!-- Location: share location in chat + geotag requests -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>ركوست محتاج موقعك لمشاركته في الشات وإضافته لطلبك. Rqwst needs your location to share it in chat and attach it to your request.</string>
+
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>ركوست محتاج موقعك لمشاركته في الشات. Rqwst needs your location to share it in chat.</string>
+
+    <!-- Contacts: not used — but some plugins may require -->
+    <!-- <key>NSContactsUsageDescription</key> -->
+
+    <!-- ── Push notifications ────────────────────────────────────────── -->
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+        <string>remote-notification</string>
+    </array>
+
+    <!-- ── WebRTC audio (allow background audio during calls) ────────── -->
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+        <string>remote-notification</string>
+        <string>voip</string>
+        <string>audio</string>
+    </array>
+
+    <!-- ── App Transport Security ───────────────────────────────────── -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <!-- Allow your server — replace with your actual domain in production -->
+        <key>NSAllowsArbitraryLoads</key>
+        <false/>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>rqwst.app</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <false/>
+                <key>NSExceptionMinimumTLSVersion</key>
+                <string>TLSv1.2</string>
+            </dict>
+        </dict>
+    </dict>
+
+    <!-- ── Google Maps ────────────────────────────────────────────────── -->
+    <key>GMSApiKey</key>
+    <string>AIzaSyBTtJz6qY4IaEvwGG01gM-BgaxH2oNmTzQ</string>
+
+    <!-- ── Flutter ───────────────────────────────────────────────────── -->
+    <key>CADisableMinimumFrameDurationOnPhone</key>
+    <true/>
+    <key>UIApplicationSupportsIndirectInputEvents</key>
+    <true/>
+</dict>
+</plist>
