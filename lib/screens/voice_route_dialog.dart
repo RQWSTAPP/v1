@@ -130,7 +130,7 @@ class _VoiceRouteDialogState extends State<VoiceRouteDialog>
       child: Column(mainAxisSize: MainAxisSize.min, children: [
         // Handle
         Center(child: Container(width: 36, height: 4, margin: const EdgeInsets.only(top: 16, bottom: 20),
-          decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+          decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(2)))),
 
         // ── Header: logo + title ─────────────────────────────────────────────
@@ -143,7 +143,7 @@ class _VoiceRouteDialogState extends State<VoiceRouteDialog>
               decoration: BoxDecoration(
                 color: RqwstColors.brand,
                 borderRadius: BorderRadius.circular(14),
-                boxShadow: [BoxShadow(color: RqwstColors.brand.withOpacity(0.35), blurRadius: 16)],
+                boxShadow: [BoxShadow(color: RqwstColors.brand.withValues(alpha: 0.35), blurRadius: 16)],
               ),
               child: const Icon(Icons.mic, color: Colors.white, size: 22),
             ),
@@ -172,7 +172,7 @@ class _VoiceRouteDialogState extends State<VoiceRouteDialog>
                 color: Theme.of(context).colorScheme.surfaceContainerHighest,
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text('جرّب تقول:', style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.w700,
-                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4))),
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4))),
                   const SizedBox(height: 4),
                   AnimatedSwitcher(
                     duration: const Duration(milliseconds: 400),
@@ -257,7 +257,7 @@ class _IdleStateState extends State<_IdleState> with SingleTickerProviderStateMi
               color: RqwstColors.brand,
               shape: BoxShape.circle,
               boxShadow: [BoxShadow(
-                color: RqwstColors.brand.withOpacity(0.35 + _pulse.value * 0.2),
+                color: RqwstColors.brand.withValues(alpha: 0.35 + _pulse.value * 0.2),
                 blurRadius: 32 + _pulse.value * 16,
                 spreadRadius: _pulse.value * 8,
               )],
@@ -272,7 +272,7 @@ class _IdleStateState extends State<_IdleState> with SingleTickerProviderStateMi
         const SizedBox(height: 16),
         Text('اضغط وتكلم', style: GoogleFonts.cairo(
           fontSize: 14, fontWeight: FontWeight.w700,
-          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6))),
+          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6))),
       ]),
     );
   }
@@ -316,7 +316,7 @@ class _RecordingState extends StatelessWidget {
             decoration: BoxDecoration(
               color: RqwstColors.rose,
               shape: BoxShape.circle,
-              boxShadow: [BoxShadow(color: RqwstColors.rose.withOpacity(0.3), blurRadius: 24, spreadRadius: 8)],
+              boxShadow: [BoxShadow(color: RqwstColors.rose.withValues(alpha: 0.3), blurRadius: 24, spreadRadius: 8)],
             ),
             child: const Center(child: Text('⏹', style: TextStyle(fontSize: 32))),
           ),
@@ -335,7 +335,7 @@ class _RecordingState extends StatelessWidget {
           )
         else
           Text('جاري الاستماع...', style: GoogleFonts.cairo(
-            fontSize: 13, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4))),
+            fontSize: 13, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4))),
         const SizedBox(height: 16),
       ]),
     );
@@ -356,10 +356,10 @@ class _ProcessingState extends StatelessWidget {
         const SizedBox(height: 12),
         Text('جاري تحليل المسار...', style: GoogleFonts.cairo(
           fontSize: 14, fontWeight: FontWeight.w700,
-          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6))),
+          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6))),
         const SizedBox(height: 6),
         Text('"$transcript"', style: GoogleFonts.cairo(
-          fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4)),
+          fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4)),
           textAlign: TextAlign.center),
         const SizedBox(height: 12),
         const CircularProgressIndicator(color: RqwstColors.brand, strokeWidth: 2),
@@ -387,7 +387,7 @@ class _ResultState extends StatelessWidget {
             color: Theme.of(context).colorScheme.surfaceContainerHighest,
             borderRadius: BorderRadius.circular(14)),
           child: Text('🎤 "${result.transcript}"',
-            style: GoogleFonts.cairo(fontSize: 13, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+            style: GoogleFonts.cairo(fontSize: 13, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
         ),
         const SizedBox(height: 14),
 
@@ -395,9 +395,9 @@ class _ResultState extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [RqwstColors.brandL, RqwstColors.brand.withOpacity(0.04)]),
+            gradient: LinearGradient(colors: [RqwstColors.brandL, RqwstColors.brand.withValues(alpha: 0.04)]),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: RqwstColors.brand.withOpacity(0.4), width: 1.5),
+            border: Border.all(color: RqwstColors.brand.withValues(alpha: 0.4), width: 1.5),
           ),
           child: Column(children: [
             // Pickup row
@@ -405,12 +405,12 @@ class _ResultState extends StatelessWidget {
               Container(width: 10, height: 10,
                 decoration: BoxDecoration(
                   color: RqwstColors.brand, shape: BoxShape.circle,
-                  boxShadow: [BoxShadow(color: RqwstColors.brand.withOpacity(0.3), blurRadius: 6, spreadRadius: 2)])),
+                  boxShadow: [BoxShadow(color: RqwstColors.brand.withValues(alpha: 0.3), blurRadius: 6, spreadRadius: 2)])),
               const SizedBox(width: 10),
               Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text('نقطة الانطلاق', style: GoogleFonts.cairo(
                   fontSize: 11, fontWeight: FontWeight.w700,
-                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.45))),
+                  color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.45))),
                 const SizedBox(height: 2),
                 Text(result.pickup.isNotEmpty ? result.pickup : 'موقعي الحالي (GPS)',
                   style: GoogleFonts.cairo(fontSize: 15, fontWeight: FontWeight.w800)),
@@ -423,19 +423,19 @@ class _ResultState extends StatelessWidget {
             // Connector
             Padding(padding: const EdgeInsets.only(left: 4, top: 6, bottom: 6),
               child: Container(width: 1, height: 16,
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.15))),
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.15))),
 
             // Dropoff row
             Row(children: [
               Container(width: 10, height: 10,
                 decoration: BoxDecoration(
                   color: RqwstColors.rose, shape: BoxShape.circle,
-                  boxShadow: [BoxShadow(color: RqwstColors.rose.withOpacity(0.3), blurRadius: 6, spreadRadius: 2)])),
+                  boxShadow: [BoxShadow(color: RqwstColors.rose.withValues(alpha: 0.3), blurRadius: 6, spreadRadius: 2)])),
               const SizedBox(width: 10),
               Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text('نقطة الوصول', style: GoogleFonts.cairo(
                   fontSize: 11, fontWeight: FontWeight.w700,
-                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.45))),
+                  color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.45))),
                 const SizedBox(height: 2),
                 Text(result.dropoff.isNotEmpty ? result.dropoff : 'لم يُحدد',
                   style: GoogleFonts.cairo(fontSize: 15, fontWeight: FontWeight.w800,

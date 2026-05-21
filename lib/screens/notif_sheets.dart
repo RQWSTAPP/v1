@@ -70,7 +70,7 @@ class _NotifSheetState extends State<NotifSheet> {
         child: Column(children: [
           // Handle
           Center(child: Container(width: 40, height: 4, margin: const EdgeInsets.only(top: 12),
-            decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+            decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(2)))),
           // Header
           Padding(
@@ -120,19 +120,19 @@ class _NotifSheetState extends State<NotifSheet> {
                           borderRadius: BorderRadius.circular(14),
                           border: Border.all(
                             color: n.read
-                                ? Theme.of(context).colorScheme.onSurface.withOpacity(0.07)
-                                : RqwstColors.brand.withOpacity(0.2)),
+                                ? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.07)
+                                : RqwstColors.brand.withValues(alpha: 0.2)),
                         ),
                         child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                           Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                             Text(n.title, style: GoogleFonts.cairo(fontSize: 14, fontWeight: FontWeight.w800)),
                             const SizedBox(height: 3),
                             Text(n.body, style: GoogleFonts.cairo(fontSize: 13,
-                              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7))),
+                              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
                           ])),
                           Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
                             Text(n.time, style: GoogleFonts.cairo(fontSize: 11,
-                              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4))),
+                              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4))),
                             if (!n.read) ...[
                               const SizedBox(height: 6),
                               Container(width: 7, height: 7,
@@ -153,7 +153,7 @@ class _NotifSheetState extends State<NotifSheet> {
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.surfaceContainerHighest,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.07))),
+                border: Border.all(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.07))),
               child: Row(children: [
                 const Icon(Icons.notifications_outlined, size: 14),
                 const SizedBox(width: 7),
@@ -164,7 +164,7 @@ class _NotifSheetState extends State<NotifSheet> {
                           ? (rtl ? 'الإشعارات متوقفة' : 'Notifications blocked')
                           : (rtl ? 'فعّل الإشعارات' : 'Enable Notifications'),
                   style: GoogleFonts.cairo(fontSize: 13,
-                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7)))),
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7)))),
                 if (_perm == 'granted')
                   Text('✓', style: GoogleFonts.cairo(color: RqwstColors.brand, fontWeight: FontWeight.w800))
                 else if (_perm == 'denied')
@@ -244,7 +244,7 @@ class _EditNameSheetState extends State<EditNameSheet> {
         ),
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           Center(child: Container(width: 40, height: 4,
-            decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+            decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(2)))),
           const SizedBox(height: 16),
           Text('✏️ ${rtl ? 'تغيير الاسم' : 'Edit Name'}',
@@ -252,7 +252,7 @@ class _EditNameSheetState extends State<EditNameSheet> {
           const SizedBox(height: 14),
           Text(rtl ? 'الاسم الجديد' : 'New Name',
             style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700,
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
           const SizedBox(height: 6),
           TextField(
             controller: _ctrl,
@@ -345,7 +345,7 @@ class _ChangePwSheetState extends State<ChangePwSheet> {
         ),
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           Center(child: Container(width: 40, height: 4,
-            decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+            decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(2)))),
           const SizedBox(height: 16),
           Text('🔑 ${rtl ? 'تغيير كلمة المرور' : 'Change Password'}',
@@ -395,7 +395,7 @@ class _PwField extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
     Text(label, style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700,
-      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+      color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
     const SizedBox(height: 5),
     TextField(
       controller: ctrl, obscureText: obscure,

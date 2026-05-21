@@ -293,7 +293,7 @@ class _NewRequestSheetState extends State<NewRequestSheet> {
             padding: const EdgeInsets.fromLTRB(18, 10, 18, 0),
             child: Column(children: [
               Center(child: Container(width: 36, height: 4,
-                decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+                decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(2)))),
               const SizedBox(height: 10),
               Row(children: [
@@ -327,7 +327,7 @@ class _NewRequestSheetState extends State<NewRequestSheet> {
                     height: 6,
                     margin: const EdgeInsets.only(right: 4),
                     decoration: BoxDecoration(
-                      color: _step >= i + 1 ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withOpacity(0.15),
+                      color: _step >= i + 1 ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(3),
                     ),
                   ))),
@@ -337,7 +337,7 @@ class _NewRequestSheetState extends State<NewRequestSheet> {
                   child: Container(width: 34, height: 34,
                     decoration: BoxDecoration(color: Theme.of(context).colorScheme.surfaceContainerHighest, shape: BoxShape.circle),
                     child: Center(child: Text('✕', style: GoogleFonts.cairo(fontSize: 16,
-                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))))),
+                      color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))))),
                 ),
               ]),
             ]),
@@ -464,7 +464,7 @@ class _Step1 extends StatelessWidget {
         child: Text('🚗  🏃  ⚡  🤝', style: TextStyle(fontSize: 28, letterSpacing: 8)),
       )),
       Text(rtl ? 'اختار نوع الطلب عشان نساعدك أحسن' : 'Choose type for the best experience',
-        style: GoogleFonts.cairo(fontSize: 13, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
+        style: GoogleFonts.cairo(fontSize: 13, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5)),
         textAlign: TextAlign.center),
       const SizedBox(height: 16),
 
@@ -490,7 +490,7 @@ class _Step1 extends StatelessWidget {
         const Expanded(child: Divider()),
         Padding(padding: const EdgeInsets.symmetric(horizontal: 12),
           child: Text(rtl ? 'أو' : 'OR', style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.w700,
-            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4)))),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4)))),
         const Expanded(child: Divider()),
       ]),
       const SizedBox(height: 12),
@@ -529,10 +529,10 @@ class _TopCatCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: selected ? RqwstColors.brandL : Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: selected ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withOpacity(0.1), width: 2),
+        border: Border.all(color: selected ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1), width: 2),
         boxShadow: selected
-            ? [BoxShadow(color: RqwstColors.brand.withOpacity(0.18), blurRadius: 24)]
-            : [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 8)],
+            ? [BoxShadow(color: RqwstColors.brand.withValues(alpha: 0.18), blurRadius: 24)]
+            : [BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 8)],
       ),
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Text(icon, style: const TextStyle(fontSize: 36)),
@@ -542,7 +542,7 @@ class _TopCatCard extends StatelessWidget {
         if (hint.isNotEmpty) ...[
           const SizedBox(height: 4),
           Text(hint, style: GoogleFonts.cairo(fontSize: 11,
-            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.45)), textAlign: TextAlign.center),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.45)), textAlign: TextAlign.center),
         ],
       ]),
     ),
@@ -617,9 +617,9 @@ class _Step2Delivery extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
           margin: const EdgeInsets.only(bottom: 10),
           decoration: BoxDecoration(
-            color: RqwstColors.brand.withOpacity(0.08),
+            color: RqwstColors.brand.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: RqwstColors.brand.withOpacity(0.3)),
+            border: Border.all(color: RqwstColors.brand.withValues(alpha: 0.3)),
           ),
           child: Row(children: [
             const Icon(Icons.my_location, color: RqwstColors.brand, size: 16),
@@ -639,8 +639,8 @@ class _Step2Delivery extends StatelessWidget {
             gradient: const LinearGradient(
               colors: [Color(0xFF0F2918), Color(0xFF1A4028), Color(0xFF0F2918)]),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: RqwstColors.brand.withOpacity(0.5), width: 1.5),
-            boxShadow: [BoxShadow(color: RqwstColors.brand.withOpacity(0.25), blurRadius: 20)],
+            border: Border.all(color: RqwstColors.brand.withValues(alpha: 0.5), width: 1.5),
+            boxShadow: [BoxShadow(color: RqwstColors.brand.withValues(alpha: 0.25), blurRadius: 20)],
           ),
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
           child: Row(children: [
@@ -649,7 +649,7 @@ class _Step2Delivery extends StatelessWidget {
               decoration: BoxDecoration(
                 color: RqwstColors.brand,
                 borderRadius: BorderRadius.circular(10),
-                boxShadow: [BoxShadow(color: RqwstColors.brand.withOpacity(0.4), blurRadius: 10)],
+                boxShadow: [BoxShadow(color: RqwstColors.brand.withValues(alpha: 0.4), blurRadius: 10)],
               ),
               child: const Icon(Icons.mic, color: Colors.white, size: 20),
             ),
@@ -689,7 +689,7 @@ class _Step2Delivery extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: RqwstColors.brand,
                   shape: BoxShape.circle,
-                  boxShadow: [BoxShadow(color: RqwstColors.brand.withOpacity(0.3), blurRadius: 6)],
+                  boxShadow: [BoxShadow(color: RqwstColors.brand.withValues(alpha: 0.3), blurRadius: 6)],
                 )),
               const SizedBox(width: 10),
               Expanded(child: TextField(
@@ -697,7 +697,7 @@ class _Step2Delivery extends StatelessWidget {
                 textDirection: rtl ? TextDirection.rtl : TextDirection.ltr,
                 decoration: InputDecoration(
                   hintText: rtl ? 'نقطة الانطلاق...' : 'Pickup location...',
-                  hintStyle: GoogleFonts.cairo(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4)),
+                  hintStyle: GoogleFonts.cairo(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4)),
                   border: InputBorder.none, isDense: true,
                   contentPadding: const EdgeInsets.symmetric(vertical: 8),
                 ),
@@ -718,9 +718,9 @@ class _Step2Delivery extends StatelessWidget {
           Padding(padding: const EdgeInsets.symmetric(horizontal: 12),
             child: Row(children: [
               const SizedBox(width: 5),
-              Container(width: 1.5, height: 16, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.15)),
+              Container(width: 1.5, height: 16, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.15)),
               const SizedBox(width: 10),
-              Expanded(child: Divider(height: 1, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.07))),
+              Expanded(child: Divider(height: 1, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.07))),
             ])),
 
           // Dropoff row
@@ -731,7 +731,7 @@ class _Step2Delivery extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: RqwstColors.rose,
                   shape: BoxShape.circle,
-                  boxShadow: [BoxShadow(color: RqwstColors.rose.withOpacity(0.3), blurRadius: 6)],
+                  boxShadow: [BoxShadow(color: RqwstColors.rose.withValues(alpha: 0.3), blurRadius: 6)],
                 )),
               const SizedBox(width: 10),
               Expanded(child: TextField(
@@ -739,7 +739,7 @@ class _Step2Delivery extends StatelessWidget {
                 textDirection: rtl ? TextDirection.rtl : TextDirection.ltr,
                 decoration: InputDecoration(
                   hintText: rtl ? 'نقطة الوصول...' : 'Dropoff location...',
-                  hintStyle: GoogleFonts.cairo(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4)),
+                  hintStyle: GoogleFonts.cairo(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4)),
                   border: InputBorder.none, isDense: true,
                   contentPadding: const EdgeInsets.symmetric(vertical: 8),
                 ),
@@ -788,16 +788,16 @@ class _Step2Delivery extends StatelessWidget {
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surfaceContainerHighest,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.07)),
+            border: Border.all(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.07)),
           ),
           child: Center(child: Column(mainAxisSize: MainAxisSize.min, children: [
-            Icon(Icons.map_outlined, size: 36, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.25)),
+            Icon(Icons.map_outlined, size: 36, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.25)),
             const SizedBox(height: 8),
             Text(
               pickupLat == null
                   ? (rtl ? 'اكتب نقطة الانطلاق' : 'Enter pickup location')
                   : (rtl ? 'اكتب نقطة الوصول' : 'Enter dropoff location'),
-              style: GoogleFonts.cairo(fontSize: 13, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4)),
+              style: GoogleFonts.cairo(fontSize: 13, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4)),
             ),
           ])),
         ),
@@ -829,13 +829,13 @@ class _SuggestionList extends StatelessWidget {
     decoration: BoxDecoration(
       color: Theme.of(context).colorScheme.surface,
       borderRadius: BorderRadius.circular(14),
-      border: Border.all(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.07)),
-      boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.08), blurRadius: 16)],
+      border: Border.all(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.07)),
+      boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.08), blurRadius: 16)],
     ),
     child: Column(children: [
       Padding(padding: const EdgeInsets.fromLTRB(14, 8, 14, 4),
         child: Text(label, style: GoogleFonts.cairo(fontSize: 10, fontWeight: FontWeight.w800,
-          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4), letterSpacing: 0.5))),
+          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4), letterSpacing: 0.5))),
       ...suggestions.take(5).map((s) {
         final name = (s['display_name'] as String? ?? '').split(',');
         return GestureDetector(
@@ -843,10 +843,10 @@ class _SuggestionList extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.fromLTRB(14, 8, 14, 8),
             decoration: BoxDecoration(
-              border: Border(top: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.06)))),
+              border: Border(top: BorderSide(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.06)))),
             child: Row(children: [
               Container(width: 32, height: 32,
-                decoration: BoxDecoration(color: color.withOpacity(0.1), borderRadius: BorderRadius.circular(10)),
+                decoration: BoxDecoration(color: color.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(10)),
                 child: Icon(Icons.location_on, color: color, size: 16)),
               const SizedBox(width: 10),
               Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -854,7 +854,7 @@ class _SuggestionList extends StatelessWidget {
                   style: GoogleFonts.cairo(fontSize: 14, fontWeight: FontWeight.w700), overflow: TextOverflow.ellipsis),
                 if (name.length > 1)
                   Text(name.skip(1).take(2).join('،'),
-                    style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.45)),
+                    style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.45)),
                     overflow: TextOverflow.ellipsis),
               ])),
             ]),
@@ -982,7 +982,7 @@ class _RouteCardState extends State<_RouteCard> {
               child: Row(children: [
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                  decoration: BoxDecoration(color: Colors.black.withOpacity(0.5),
+                  decoration: BoxDecoration(color: Colors.black.withValues(alpha: 0.5),
                     borderRadius: BorderRadius.circular(999)),
                   child: Text('📏 ${widget.km.toStringAsFixed(1)} ${widget.rtl ? 'كم' : 'km'}',
                     style: GoogleFonts.cairo(fontSize: 13, fontWeight: FontWeight.w700, color: Colors.white)),
@@ -997,7 +997,7 @@ class _RouteCardState extends State<_RouteCard> {
             Center(child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.6),
+                color: Colors.black.withValues(alpha: 0.6),
                 borderRadius: BorderRadius.circular(999)),
               child: Row(mainAxisSize: MainAxisSize.min, children: [
                 const Icon(Icons.touch_app, color: Colors.white, size: 14),
@@ -1031,7 +1031,7 @@ class _Step2General extends StatelessWidget {
   Widget build(BuildContext context) => Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
     Text(rtl ? 'وصف الطلب' : 'Description',
       style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700,
-        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
     const SizedBox(height: 6),
     TextField(
       controller: descCtrl,
@@ -1048,7 +1048,7 @@ class _Step2General extends StatelessWidget {
     Row(children: [
       Text(rtl ? 'المنطقة' : 'Area',
         style: GoogleFonts.cairo(fontSize: 13, fontWeight: FontWeight.w700,
-          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6))),
+          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6))),
       const SizedBox(width: 10),
       Expanded(child: GestureDetector(
         onTap: onAreaTap,
@@ -1059,7 +1059,7 @@ class _Step2General extends StatelessWidget {
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surfaceContainerHighest,
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: area.isNotEmpty ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withOpacity(0.1), width: 1.5),
+            border: Border.all(color: area.isNotEmpty ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1), width: 1.5),
           ),
           child: Row(children: [
             Icon(Icons.location_on_outlined, size: 13, color: area.isNotEmpty ? RqwstColors.brand : Colors.grey),
@@ -1082,7 +1082,7 @@ class _Step2General extends StatelessWidget {
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.07)),
+          border: Border.all(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.07)),
         ),
         child: Row(children: [
           Checkbox(value: shareLocation, onChanged: (v) => onShareLocationChanged(v ?? false),
@@ -1121,7 +1121,7 @@ class _Step3Delivery extends StatelessWidget {
       decoration: BoxDecoration(
         color: RqwstColors.brandL,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: RqwstColors.brand.withOpacity(0.4), width: 1.5),
+        border: Border.all(color: RqwstColors.brand.withValues(alpha: 0.4), width: 1.5),
       ),
       child: Row(children: [
         Container(width: 8, height: 8, decoration: const BoxDecoration(color: RqwstColors.brand, shape: BoxShape.circle)),
@@ -1145,7 +1145,7 @@ class _Step3Delivery extends StatelessWidget {
     // Price
     Text('💰 ${rtl ? 'السعر المطلوب' : 'Requested Price'} (${rtl ? 'اختياري' : 'optional'})',
       style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700,
-        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
     const SizedBox(height: 6),
     TextField(
       controller: priceCtrl,
@@ -1175,7 +1175,7 @@ class _Step3Delivery extends StatelessWidget {
     // Optional desc
     Text(rtl ? 'تفاصيل إضافية (اختياري)' : 'Extra Details (optional)',
       style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700,
-        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
     const SizedBox(height: 6),
     TextField(controller: descCtrl, maxLines: 2,
       textDirection: rtl ? TextDirection.rtl : TextDirection.ltr,
@@ -1216,7 +1216,7 @@ class _Step3General extends StatelessWidget {
         const Text('💰', style: TextStyle(fontSize: 52)),
         const SizedBox(height: 6),
         Text(rtl ? 'حدد سعرك أو اتركه مفتوح للعروض' : 'Set your price or leave open for bids',
-          style: GoogleFonts.cairo(fontSize: 13, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+          style: GoogleFonts.cairo(fontSize: 13, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
         const SizedBox(height: 6),
         Container(padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 3),
           decoration: BoxDecoration(color: RqwstColors.brandL, borderRadius: BorderRadius.circular(999)),
@@ -1273,7 +1273,7 @@ class _AreaRow extends StatelessWidget {
   Widget build(BuildContext context) => Row(children: [
     Text(rtl ? 'المنطقة' : 'Area',
       style: GoogleFonts.cairo(fontSize: 13, fontWeight: FontWeight.w700,
-        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6))),
+        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6))),
     const SizedBox(width: 10),
     Expanded(child: GestureDetector(
       onTap: onTap,
@@ -1313,7 +1313,7 @@ class _AreaPicker extends StatelessWidget {
     ),
     child: Column(children: [
       Container(width: 40, height: 4, margin: const EdgeInsets.only(top: 12, bottom: 12),
-        decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2), borderRadius: BorderRadius.circular(2))),
+        decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2), borderRadius: BorderRadius.circular(2))),
       Padding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
         child: Text(rtl ? 'اختار المنطقة' : 'Choose Area',
           style: GoogleFonts.cairo(fontSize: 16, fontWeight: FontWeight.w900))),

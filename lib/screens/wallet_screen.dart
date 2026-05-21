@@ -42,29 +42,29 @@ class _WalletScreenState extends State<WalletScreen> {
                     // Balance grid
                     Row(children: [
                       Expanded(child: RqwstCard(
-                        background: RqwstColors.brand.withOpacity(0.08),
+                        background: RqwstColors.brand.withValues(alpha: 0.08),
                         child: Column(children: [
-                          Text(s.t('balance'), style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+                          Text(s.t('balance'), style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
                           const SizedBox(height: 4),
                           Text('${s.walletBalance}', style: GoogleFonts.cairo(fontSize: 30, fontWeight: FontWeight.w900, color: RqwstColors.brand)),
-                          Text(s.t('egp'), style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+                          Text(s.t('egp'), style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
                         ], mainAxisAlignment: MainAxisAlignment.center),
                       )),
                       const SizedBox(width: 10),
                       Expanded(child: RqwstCard(
-                        background: RqwstColors.invert.withOpacity(0.08),
+                        background: RqwstColors.invert.withValues(alpha: 0.08),
                         child: Column(children: [
-                          Text(s.t('earned'), style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+                          Text(s.t('earned'), style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
                           const SizedBox(height: 4),
                           Text('${s.walletEarned}', style: GoogleFonts.cairo(fontSize: 30, fontWeight: FontWeight.w900, color: RqwstColors.invert)),
-                          Text(s.t('egp'), style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+                          Text(s.t('egp'), style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
                         ], mainAxisAlignment: MainAxisAlignment.center),
                       )),
                     ]),
                     const SizedBox(height: 20),
                     Text(
                       rtl ? 'ميزات المحفظة قريباً 💳' : 'Wallet features coming soon 💳',
-                      style: GoogleFonts.cairo(fontSize: 15, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
+                      style: GoogleFonts.cairo(fontSize: 15, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5)),
                     ),
                   ]),
                 ),

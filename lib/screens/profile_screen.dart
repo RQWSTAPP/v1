@@ -110,7 +110,7 @@ class _ProfileCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(28),
               color: RqwstColors.brand,
-              boxShadow: [BoxShadow(color: RqwstColors.brand.withOpacity(0.3), blurRadius: 28)],
+              boxShadow: [BoxShadow(color: RqwstColors.brand.withValues(alpha: 0.3), blurRadius: 28)],
             ),
             child: user.profilePhoto != null || user.photoUrl != null
                 ? ClipRRect(
@@ -129,7 +129,7 @@ class _ProfileCard extends StatelessWidget {
         ]),
         const SizedBox(height: 14),
         Text(user.name, style: GoogleFonts.cairo(fontSize: 22, fontWeight: FontWeight.w900)),
-        Text(user.mobile, style: GoogleFonts.cairo(fontSize: 13, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+        Text(user.mobile, style: GoogleFonts.cairo(fontSize: 13, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
         if (user.badge != null) ...[const SizedBox(height: 4), Text(user.badge!, style: const TextStyle(fontSize: 16))],
         const SizedBox(height: 8),
         Wrap(spacing: 8, children: [
@@ -180,8 +180,8 @@ class _StatBox extends StatelessWidget {
     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 14),
     child: Column(children: [
       Text(value, style: GoogleFonts.cairo(fontSize: 26, fontWeight: FontWeight.w900, color: color)),
-      Text(label, style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)), textAlign: TextAlign.center),
-      Text(sub, style: GoogleFonts.cairo(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4)), textAlign: TextAlign.center),
+      Text(label, style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5)), textAlign: TextAlign.center),
+      Text(sub, style: GoogleFonts.cairo(fontSize: 10, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4)), textAlign: TextAlign.center),
     ]),
   );
 }
@@ -205,7 +205,7 @@ class _ProviderToggle extends StatelessWidget {
           ]),
           const SizedBox(height: 3),
           Text(on ? s.t('available') : s.t('unavailable'),
-            style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+            style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
         ])),
         GestureDetector(
           onTap: s.toggleAvail,
@@ -213,7 +213,7 @@ class _ProviderToggle extends StatelessWidget {
             duration: const Duration(milliseconds: 250),
             width: 50, height: 28,
             decoration: BoxDecoration(
-              color: on ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+              color: on ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(14),
             ),
             child: AnimatedAlign(
@@ -247,7 +247,7 @@ class _IdentityCard extends StatelessWidget {
         style: GoogleFonts.cairo(fontSize: 15, fontWeight: FontWeight.w800)),
       const SizedBox(height: 6),
       Text(rtl ? 'الشارات دي بتظهر لطالب الخدمة وبتزيد ثقتهم' : 'These badges show on your offers and build trust',
-        style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+        style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
       const SizedBox(height: 14),
       _DocRow(
         icon: '🪪',
@@ -292,7 +292,7 @@ class _DocRow extends StatelessWidget {
       badge = StatusPill(label: rtl ? '❌ مرفوض' : '❌ Rejected', color: 'red');
     } else {
       badge = Text(rtl ? 'لم يُرفع بعد' : 'Not uploaded yet',
-        style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4)));
+        style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4)));
     }
 
     return Container(
@@ -334,7 +334,7 @@ class _VehicleCard extends StatelessWidget {
         style: GoogleFonts.cairo(fontSize: 15, fontWeight: FontWeight.w800)),
       const SizedBox(height: 4),
       Text(rtl ? 'أكمل بيانات مركبتك لقبول طلبات التوصيل' : 'Complete vehicle info to accept delivery requests',
-        style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+        style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
       const SizedBox(height: 14),
 
       // Delivery toggle
@@ -346,7 +346,7 @@ class _VehicleCard extends StatelessWidget {
             Text(rtl ? 'متاح لطلبات التوصيل' : 'Accept Delivery Requests',
               style: GoogleFonts.cairo(fontSize: 14, fontWeight: FontWeight.w700)),
             Text(s.vehicleDeliveryEnabled ? (rtl ? 'مفعّل' : 'Enabled') : (rtl ? 'معطّل' : 'Disabled'),
-              style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+              style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
           ])),
           // Toggle
           _Toggle(value: s.vehicleDeliveryEnabled, onTap: () { s.vehicleDeliveryEnabled = !s.vehicleDeliveryEnabled; s.notifyListeners(); }),
@@ -356,7 +356,7 @@ class _VehicleCard extends StatelessWidget {
 
       // Vehicle type buttons
       Text(rtl ? 'نوع المركبة' : 'Vehicle Type',
-        style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+        style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
       const SizedBox(height: 8),
       Row(children: [
         for (final vt in [('car', '🚗', rtl ? 'عربية' : 'Car'), ('motorcycle', '🛵', rtl ? 'موتوسيكل' : 'Motorcycle')])
@@ -370,7 +370,7 @@ class _VehicleCard extends StatelessWidget {
 
       // Make dropdown
       Text(rtl ? 'الماركة' : 'Make',
-        style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+        style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
       const SizedBox(height: 6),
       DropdownButtonFormField<String>(
         value: s.vehicleMake.isEmpty ? null : s.vehicleMake,
@@ -384,7 +384,7 @@ class _VehicleCard extends StatelessWidget {
 
       // Plate number
       Text(rtl ? 'رقم اللوحة' : 'Plate Number',
-        style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+        style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
       const SizedBox(height: 6),
       TextFormField(
         initialValue: s.vehiclePlate,
@@ -419,7 +419,7 @@ class _Toggle extends StatelessWidget {
       duration: const Duration(milliseconds: 250),
       width: 50, height: 28,
       decoration: BoxDecoration(
-        color: value ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+        color: value ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(14),
       ),
       child: AnimatedAlign(
@@ -445,7 +445,7 @@ class _VehicleTypeBtn extends StatelessWidget {
       duration: const Duration(milliseconds: 180),
       padding: const EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
-        border: Border.all(color: selected ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withOpacity(0.15), width: 2),
+        border: Border.all(color: selected ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.15), width: 2),
         borderRadius: BorderRadius.circular(14),
         color: selected ? RqwstColors.brandL : Theme.of(context).colorScheme.surfaceContainerHighest,
       ),

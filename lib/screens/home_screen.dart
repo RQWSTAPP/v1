@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: RqwstColors.brand,
                   borderRadius: BorderRadius.circular(11),
-                  boxShadow: [BoxShadow(color: RqwstColors.brand.withOpacity(0.3), blurRadius: 10)],
+                  boxShadow: [BoxShadow(color: RqwstColors.brand.withValues(alpha: 0.3), blurRadius: 10)],
                 ),
                 child: const Icon(Icons.diamond, color: Colors.white, size: 18),
               ),
@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                   s.user != null
                       ? (rtl ? 'أهلاً، ${s.user!.name.split(' ').first}' : s.user!.name.split(' ').first)
                       : (rtl ? 'اطلب أي حاجة' : 'Request anything'),
-                  style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
+                  style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5)),
                 ),
               ]),
             ]),
@@ -144,7 +144,7 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(width: 6),
                   Text(rtl ? 'إزاي بيشتغل؟' : 'How it works',
                     style: GoogleFonts.cairo(fontSize: 13, fontWeight: FontWeight.w800,
-                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7))),
+                      color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
                 ]),
                 const SizedBox(height: 12),
                 ...[ for (final item in (rtl
@@ -157,7 +157,7 @@ class HomeScreen extends StatelessWidget {
 
               // ── Provider CTA card ─────────────────────────────────────────
               RqwstCard(
-                background: RqwstColors.invert.withOpacity(0.05),
+                background: RqwstColors.invert.withValues(alpha: 0.05),
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Row(children: [
                     Icon(Icons.bolt, size: 14, color: RqwstColors.invert),
@@ -180,8 +180,8 @@ class HomeScreen extends StatelessWidget {
                         style: GoogleFonts.cairo(color: RqwstColors.invert, fontWeight: FontWeight.w800, fontSize: 13)),
                       onPressed: () {},
                       style: OutlinedButton.styleFrom(
-                        side: BorderSide(color: RqwstColors.invert.withOpacity(0.3)),
-                        backgroundColor: RqwstColors.invert.withOpacity(0.08),
+                        side: BorderSide(color: RqwstColors.invert.withValues(alpha: 0.3)),
+                        backgroundColor: RqwstColors.invert.withValues(alpha: 0.08),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       ),
                     ),
@@ -245,7 +245,7 @@ class _Billboard extends StatelessWidget {
             const SizedBox(height: 5),
             Text(rtl ? slide.sub : slide.subEn,
               style: GoogleFonts.cairo(fontSize: 13,
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6))),
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6))),
           ]),
         ),
         // Dots
@@ -261,7 +261,7 @@ class _Billboard extends StatelessWidget {
                   width: i == s.bbIdx ? 18 : 5,
                   height: 5,
                   decoration: BoxDecoration(
-                    color: i == s.bbIdx ? RqwstColors.brand : Colors.black.withOpacity(0.15),
+                    color: i == s.bbIdx ? RqwstColors.brand : Colors.black.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(3),
                   ),
                 ),
@@ -286,14 +286,14 @@ class _StepRow extends StatelessWidget {
       child: Row(children: [
         Container(
           width: 28, height: 28,
-          decoration: BoxDecoration(color: c.withOpacity(0.15), shape: BoxShape.circle),
+          decoration: BoxDecoration(color: c.withValues(alpha: 0.15), shape: BoxShape.circle),
           alignment: Alignment.center,
           child: Text(n, style: GoogleFonts.cairo(fontSize: 13, fontWeight: FontWeight.w900, color: c)),
         ),
         const SizedBox(width: 12),
         Expanded(child: Text(text, style: GoogleFonts.cairo(
           fontSize: 13, fontWeight: FontWeight.w500,
-          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
         ))),
       ]),
     );

@@ -59,7 +59,7 @@ class _RatingSheetState extends State<RatingSheet> {
       child: Column(mainAxisSize: MainAxisSize.min, children: [
         // Handle
         Center(child: Container(width: 40, height: 4,
-          decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+          decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(2)))),
         const SizedBox(height: 20),
 
@@ -90,7 +90,7 @@ class _RatingSheetState extends State<RatingSheet> {
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                 child: Text('⭐', style: TextStyle(
                   fontSize: 36,
-                  color: filled ? null : Colors.grey.withOpacity(0.3),
+                  color: filled ? null : Colors.grey.withValues(alpha: 0.3),
                 )),
               ),
             );

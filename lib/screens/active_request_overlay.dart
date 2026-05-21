@@ -251,9 +251,9 @@ class _ActiveRequestOverlayState extends State<ActiveRequestOverlay>
                     child: Container(
                       width: 36, height: 36,
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.1),
+                        color: Colors.white.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.white.withOpacity(0.15)),
+                        border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
                       ),
                       child: const Icon(Icons.close, color: Colors.white, size: 18),
                     ),
@@ -263,9 +263,9 @@ class _ActiveRequestOverlayState extends State<ActiveRequestOverlay>
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.07),
+                      color: Colors.white.withValues(alpha: 0.07),
                       borderRadius: BorderRadius.circular(999),
-                      border: Border.all(color: Colors.white.withOpacity(0.12)),
+                      border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
                     ),
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
                       Container(width: 7, height: 7,
@@ -278,7 +278,7 @@ class _ActiveRequestOverlayState extends State<ActiveRequestOverlay>
                                 ? (rtl ? 'جاري التنفيذ' : 'In Progress')
                                 : (rtl ? 'قبل المزود طلبك ✓' : 'Provider accepted ✓'),
                         style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700,
-                          color: Colors.white.withOpacity(0.85)),
+                          color: Colors.white.withValues(alpha: 0.85)),
                       ),
                     ]),
                   ),
@@ -300,7 +300,7 @@ class _ActiveRequestOverlayState extends State<ActiveRequestOverlay>
                         width: 120 + _pulseCtrl.value * 10,
                         height: 120 + _pulseCtrl.value * 10,
                         decoration: BoxDecoration(
-                          color: accentColor.withOpacity(0.08 + _pulseCtrl.value * 0.07),
+                          color: accentColor.withValues(alpha: 0.08 + _pulseCtrl.value * 0.07),
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -310,7 +310,7 @@ class _ActiveRequestOverlayState extends State<ActiveRequestOverlay>
                         decoration: BoxDecoration(
                           color: accentColor,
                           borderRadius: BorderRadius.circular(26),
-                          boxShadow: [BoxShadow(color: accentColor.withOpacity(0.4), blurRadius: 40)],
+                          boxShadow: [BoxShadow(color: accentColor.withValues(alpha: 0.4), blurRadius: 40)],
                         ),
                         child: Icon(
                           isSearching ? Icons.search
@@ -341,7 +341,7 @@ class _ActiveRequestOverlayState extends State<ActiveRequestOverlay>
                             ? '${_offers.length} ${rtl ? 'مزودين أبدوا اهتمامهم' : 'providers are interested'}'
                             : (rtl ? 'كل الناس القريبة بتشوف الطلب' : 'Everyone nearby can see your request'))
                         : (widget.req.requesterName ?? ''),
-                    style: GoogleFonts.cairo(fontSize: 14, color: Colors.white.withOpacity(0.55)),
+                    style: GoogleFonts.cairo(fontSize: 14, color: Colors.white.withValues(alpha: 0.55)),
                     textAlign: TextAlign.center,
                   ),
 
@@ -351,17 +351,17 @@ class _ActiveRequestOverlayState extends State<ActiveRequestOverlay>
                     SizedBox(width: 300, child: Column(children: [
                       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                         Text(s.t('timeLeft'),
-                          style: GoogleFonts.cairo(fontSize: 12, color: Colors.white.withOpacity(0.5))),
+                          style: GoogleFonts.cairo(fontSize: 12, color: Colors.white.withValues(alpha: 0.5))),
                         Text(_fmtTime(_secondsLeft),
                           style: GoogleFonts.cairo(fontSize: 13, fontWeight: FontWeight.w800,
-                            color: Colors.white.withOpacity(0.9))),
+                            color: Colors.white.withValues(alpha: 0.9))),
                       ]),
                       const SizedBox(height: 8),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(3),
                         child: LinearProgressIndicator(
                           value: _secondsLeft / _totalSeconds,
-                          backgroundColor: Colors.white.withOpacity(0.1),
+                          backgroundColor: Colors.white.withValues(alpha: 0.1),
                           valueColor: AlwaysStoppedAnimation(RqwstColors.brand),
                           minHeight: 5,
                         ),
@@ -377,16 +377,16 @@ class _ActiveRequestOverlayState extends State<ActiveRequestOverlay>
                         width: 36, height: 36,
                         margin: const EdgeInsets.symmetric(horizontal: 4),
                         decoration: BoxDecoration(
-                          color: RqwstColors.brand.withOpacity(0.2),
+                          color: RqwstColors.brand.withValues(alpha: 0.2),
                           shape: BoxShape.circle,
-                          border: Border.all(color: RqwstColors.brand.withOpacity(0.4)),
+                          border: Border.all(color: RqwstColors.brand.withValues(alpha: 0.4)),
                         ),
                         child: Center(child: Text('${o['price']}',
                           style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.w800, color: RqwstColors.brand))),
                       )),
                       if (_offers.length > 5)
                         Text('+${_offers.length - 5}',
-                          style: GoogleFonts.cairo(fontSize: 12, color: Colors.white.withOpacity(0.4))),
+                          style: GoogleFonts.cairo(fontSize: 12, color: Colors.white.withValues(alpha: 0.4))),
                     ]),
                   ],
 
@@ -406,9 +406,9 @@ class _ActiveRequestOverlayState extends State<ActiveRequestOverlay>
                       padding: const EdgeInsets.all(12),
                       margin: const EdgeInsets.only(bottom: 10),
                       decoration: BoxDecoration(
-                        color: RqwstColors.amber.withOpacity(0.1),
+                        color: RqwstColors.amber.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: RqwstColors.amber.withOpacity(0.25)),
+                        border: Border.all(color: RqwstColors.amber.withValues(alpha: 0.25)),
                       ),
                       child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                         const Text('⚠️', style: TextStyle(fontSize: 14)),
@@ -417,7 +417,7 @@ class _ActiveRequestOverlayState extends State<ActiveRequestOverlay>
                           rtl
                               ? 'تحقق من تقييم المزود وشاراته. لا تشارك معلوماتك الشخصية.'
                               : 'Always check provider rating and badges. Never share personal info.',
-                          style: GoogleFonts.cairo(fontSize: 11, color: Colors.white.withOpacity(0.7), height: 1.5),
+                          style: GoogleFonts.cairo(fontSize: 11, color: Colors.white.withValues(alpha: 0.7), height: 1.5),
                         )),
                       ]),
                     ),
@@ -428,9 +428,9 @@ class _ActiveRequestOverlayState extends State<ActiveRequestOverlay>
                     padding: const EdgeInsets.all(14),
                     margin: const EdgeInsets.only(bottom: 10),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.06),
+                      color: Colors.white.withValues(alpha: 0.06),
                       borderRadius: BorderRadius.circular(18),
-                      border: Border.all(color: Colors.white.withOpacity(0.1)),
+                      border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
                     ),
                     child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                       Text(widget.req.description,
@@ -439,12 +439,12 @@ class _ActiveRequestOverlayState extends State<ActiveRequestOverlay>
                       Row(children: [
                         if (widget.req.area != null) ...[
                           Text('📍 ${widget.req.area}',
-                            style: GoogleFonts.cairo(fontSize: 12, color: Colors.white.withOpacity(0.5))),
+                            style: GoogleFonts.cairo(fontSize: 12, color: Colors.white.withValues(alpha: 0.5))),
                           const SizedBox(width: 12),
                         ],
                         Text('${widget.req.finalPrice > 0 ? widget.req.finalPrice : widget.req.price} ${s.t('egp')}',
                           style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700,
-                            color: RqwstColors.brand.withOpacity(0.9))),
+                            color: RqwstColors.brand.withValues(alpha: 0.9))),
                       ]),
                     ]),
                   ),
@@ -481,7 +481,7 @@ class _ActiveRequestOverlayState extends State<ActiveRequestOverlay>
                       _DarkBtn(
                         label: rtl ? 'الطلب اكتمل' : s.t('markDone'),
                         icon: Icons.check,
-                        color: RqwstColors.brand.withOpacity(0.7),
+                        color: RqwstColors.brand.withValues(alpha: 0.7),
                         onTap: _completeReq,
                         full: true,
                         outlined: true,
@@ -495,7 +495,7 @@ class _ActiveRequestOverlayState extends State<ActiveRequestOverlay>
                     _DarkBtn(
                       label: s.t('cancelReq'),
                       icon: Icons.close,
-                      color: RqwstColors.rose.withOpacity(0.8),
+                      color: RqwstColors.rose.withValues(alpha: 0.8),
                       onTap: _cancelReq,
                       full: true,
                       outlined: true,
@@ -552,7 +552,7 @@ class _Ring extends StatelessWidget {
     width: size, height: size,
     decoration: BoxDecoration(
       shape: BoxShape.circle,
-      border: Border.all(color: color.withOpacity(opacity), width: 1),
+      border: Border.all(color: color.withValues(alpha: opacity), width: 1),
     ),
   );
 }
@@ -580,7 +580,7 @@ class _StageStrip extends StatelessWidget {
             return Expanded(child: Container(
               height: 2,
               margin: const EdgeInsets.only(bottom: 20),
-              color: idx < activeIdx ? accentColor : Colors.white.withOpacity(0.1),
+              color: idx < activeIdx ? accentColor : Colors.white.withValues(alpha: 0.1),
             ));
           } else {
             final idx = i ~/ 2;
@@ -590,17 +590,17 @@ class _StageStrip extends StatelessWidget {
                 duration: const Duration(milliseconds: 400),
                 width: 28, height: 28,
                 decoration: BoxDecoration(
-                  color: active ? accentColor : Colors.white.withOpacity(0.1),
+                  color: active ? accentColor : Colors.white.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Center(child: Text('${idx + 1}',
                   style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w800,
-                    color: active ? Colors.white : Colors.white.withOpacity(0.3)))),
+                    color: active ? Colors.white : Colors.white.withValues(alpha: 0.3)))),
               ),
               const SizedBox(height: 5),
               Text(stages[idx],
                 style: GoogleFonts.cairo(fontSize: 10, fontWeight: FontWeight.w700,
-                  color: active ? Colors.white.withOpacity(0.8) : Colors.white.withOpacity(0.3))),
+                  color: active ? Colors.white.withValues(alpha: 0.8) : Colors.white.withValues(alpha: 0.3))),
             ]);
           }
         }),
@@ -632,16 +632,16 @@ class _DarkBtn extends StatelessWidget {
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
-            color: outlined ? color.withOpacity(0.12) : color,
+            color: outlined ? color.withValues(alpha: 0.12) : color,
             borderRadius: BorderRadius.circular(16),
-            border: outlined ? Border.all(color: color.withOpacity(0.4)) : null,
-            boxShadow: outlined ? null : [BoxShadow(color: color.withOpacity(0.35), blurRadius: 24, offset: const Offset(0, 8))],
+            border: outlined ? Border.all(color: color.withValues(alpha: 0.4)) : null,
+            boxShadow: outlined ? null : [BoxShadow(color: color.withValues(alpha: 0.35), blurRadius: 24, offset: const Offset(0, 8))],
           ),
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Icon(icon, color: Colors.white.withOpacity(outlined ? 0.9 : 1), size: 18),
+            Icon(icon, color: Colors.white.withValues(alpha: outlined ? 0.9 : 1), size: 18),
             const SizedBox(width: 8),
             Text(label, style: GoogleFonts.cairo(fontSize: outlined ? 14 : 16, fontWeight: FontWeight.w900,
-              color: Colors.white.withOpacity(outlined ? 0.9 : 1))),
+              color: Colors.white.withValues(alpha: outlined ? 0.9 : 1))),
           ]),
         ),
       ),

@@ -57,13 +57,13 @@ class _AuthSheetState extends State<AuthSheet> {
         child: SingleChildScrollView(child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           // Handle
           Center(child: Container(width: 40, height: 4,
-            decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2), borderRadius: BorderRadius.circular(2)))),
+            decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2), borderRadius: BorderRadius.circular(2)))),
           const SizedBox(height: 20),
 
           // Logo
           Center(child: Container(width: 52, height: 52,
             decoration: BoxDecoration(color: RqwstColors.brand, borderRadius: BorderRadius.circular(16),
-              boxShadow: [BoxShadow(color: RqwstColors.brand.withOpacity(0.3), blurRadius: 16)]),
+              boxShadow: [BoxShadow(color: RqwstColors.brand.withValues(alpha: 0.3), blurRadius: 16)]),
             child: const Icon(Icons.diamond, color: Colors.white, size: 24))),
           const SizedBox(height: 14),
 
@@ -111,7 +111,7 @@ class _AuthSheetState extends State<AuthSheet> {
 
           // Demo hint
           Text(s.t('demoPw'), textAlign: TextAlign.center,
-            style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4))),
+            style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4))),
           const SizedBox(height: 16),
 
           // Error
@@ -151,6 +151,6 @@ class _Label extends StatelessWidget {
   Widget build(BuildContext context) => Padding(
     padding: const EdgeInsets.only(bottom: 5),
     child: Text(text, style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700,
-      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+      color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
   );
 }

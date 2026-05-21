@@ -33,7 +33,7 @@ class BrandButton extends StatelessWidget {
     Color fg = Colors.white;
     if (ghost) {
       bg = Theme.of(context).colorScheme.surfaceContainerHighest;
-      fg = Theme.of(context).colorScheme.onSurface.withOpacity(0.7);
+      fg = Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7);
     } else if (danger) {
       bg = RqwstColors.rose;
     } else if (invert) {
@@ -142,7 +142,7 @@ class _ShimmerBoxState extends State<ShimmerBox> with SingleTickerProviderStateM
       builder: (_, __) => Container(
         height: widget.height,
         decoration: BoxDecoration(
-          color: base.withOpacity(_anim.value),
+          color: base.withValues(alpha: _anim.value),
           borderRadius: BorderRadius.circular(20),
         ),
       ),
@@ -168,7 +168,7 @@ class EmptyState extends StatelessWidget {
           const SizedBox(height: 16),
           Text(label, style: GoogleFonts.cairo(
             fontSize: 15, fontWeight: FontWeight.w700,
-            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
           ), textAlign: TextAlign.center),
           if (action != null) ...[const SizedBox(height: 16), action!],
         ]),
@@ -200,12 +200,12 @@ class RqwstCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: Theme.of(context).brightness == Brightness.dark
-              ? Colors.white.withOpacity(0.07)
-              : const Color(0xFF0F172A).withOpacity(0.07),
+              ? Colors.white.withValues(alpha: 0.07)
+              : const Color(0xFF0F172A).withValues(alpha: 0.07),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
+            color: Colors.black.withValues(alpha: 0.06),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -308,7 +308,7 @@ class _ModeBtn extends StatelessWidget {
           textAlign: TextAlign.center,
           style: GoogleFonts.cairo(
             fontSize: 13, fontWeight: FontWeight.w700,
-            color: active ? Colors.white : Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+            color: active ? Colors.white : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
           ),
         ),
       ),

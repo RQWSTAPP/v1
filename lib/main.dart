@@ -104,8 +104,8 @@ class _MainShellState extends State<MainShell> {
             color: Theme.of(context).colorScheme.surface,
             border: Border(top: BorderSide(
               color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.white.withOpacity(0.07)
-                  : Colors.black.withOpacity(0.07),
+                  ? Colors.white.withValues(alpha: 0.07)
+                  : Colors.black.withValues(alpha: 0.07),
               width: 0.5,
             )),
           ),
@@ -124,7 +124,7 @@ class _MainShellState extends State<MainShell> {
                     color: s.isProv ? RqwstColors.invert : RqwstColors.brand,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [BoxShadow(
-                      color: (s.isProv ? RqwstColors.invert : RqwstColors.brand).withOpacity(0.35),
+                      color: (s.isProv ? RqwstColors.invert : RqwstColors.brand).withValues(alpha: 0.35),
                       blurRadius: 20, offset: const Offset(0, 6),
                     )],
                   ),
@@ -134,7 +134,7 @@ class _MainShellState extends State<MainShell> {
                   offset: const Offset(0, -10),
                   child: Text(s.isRTL ? 'جديد' : 'New',
                     style: GoogleFonts.cairo(fontSize: 10, fontWeight: FontWeight.w700,
-                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4))),
+                      color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4))),
                 ),
               ]),
             )),
@@ -157,7 +157,7 @@ class _NavBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = active ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withOpacity(0.4);
+    final color = active ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4);
     return Expanded(child: GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: onTap,
@@ -194,8 +194,8 @@ class _Toast extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           color: bg, borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: fg.withOpacity(0.3)),
-          boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 16)],
+          border: Border.all(color: fg.withValues(alpha: 0.3)),
+          boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: 16)],
         ),
         child: Row(children: [
           Container(width: 8, height: 8, decoration: BoxDecoration(color: fg, shape: BoxShape.circle)),

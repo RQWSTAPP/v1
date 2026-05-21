@@ -196,7 +196,7 @@ class _RequestDetailSheetState extends State<RequestDetailSheet> {
         child: Column(children: [
           // Handle
           Container(width: 40, height: 4, margin: const EdgeInsets.only(top: 12, bottom: 16),
-            decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+            decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(2))),
 
           // Header row
@@ -292,7 +292,7 @@ class _RequestDetailSheetState extends State<RequestDetailSheet> {
                   itemBuilder: (_, i) => Padding(padding: const EdgeInsets.only(bottom: 10), child: ShimmerBox(height: 90)))
               : _offers.isEmpty
                   ? Center(child: Text(s.t('noOffers'),
-                      style: GoogleFonts.cairo(fontSize: 14, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4))))
+                      style: GoogleFonts.cairo(fontSize: 14, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4))))
                   : ListView.builder(
                       controller: ctrl,
                       padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
@@ -339,12 +339,12 @@ class _OfferCard extends StatelessWidget {
         color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(18),
         border: Border.all(
-          color: accepted ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withOpacity(0.07),
+          color: accepted ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.07),
           width: accepted ? 1.5 : 1,
         ),
         boxShadow: accepted
-            ? [BoxShadow(color: RqwstColors.brand.withOpacity(0.15), blurRadius: 20)]
-            : [BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 12)],
+            ? [BoxShadow(color: RqwstColors.brand.withValues(alpha: 0.15), blurRadius: 20)]
+            : [BoxShadow(color: Colors.black.withValues(alpha: 0.06), blurRadius: 12)],
       ),
       child: Column(children: [
         // Provider header row
@@ -379,7 +379,7 @@ class _OfferCard extends StatelessWidget {
                   const Text('⭐', style: TextStyle(fontSize: 11)),
                   Text(' ${(offer['provider_rating'] as num? ?? 0).toStringAsFixed(1)}'
                       ' (${offer['provider_rating_count'] ?? 0})',
-                    style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+                    style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
                 ]),
               ]),
             ])),
@@ -388,7 +388,7 @@ class _OfferCard extends StatelessWidget {
               Text('${offer['price']}',
                 style: GoogleFonts.cairo(fontSize: 24, fontWeight: FontWeight.w900, color: RqwstColors.brand)),
               Text(s.t('egp'),
-                style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4))),
+                style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4))),
             ]),
           ]),
         ),
@@ -400,7 +400,7 @@ class _OfferCard extends StatelessWidget {
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.surfaceContainerHighest,
               border: Border.symmetric(horizontal: BorderSide(
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.07))),
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.07))),
             ),
             child: Row(children: [
               Text(offer['vehicle_type'] == 'car' ? '🚗' : '🛵', style: const TextStyle(fontSize: 14)),
@@ -415,7 +415,7 @@ class _OfferCard extends StatelessWidget {
                     Container(
                       width: 36, height: 28, margin: const EdgeInsets.only(left: 4),
                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(6),
-                        border: Border.all(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.07))),
+                        border: Border.all(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.07))),
                       child: ClipRRect(borderRadius: BorderRadius.circular(6),
                         child: Image.network(ph as String, fit: BoxFit.cover,
                           errorBuilder: (_, __, ___) => const Icon(Icons.image, size: 14))),
@@ -470,7 +470,7 @@ class _OfferCard extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 10),
           child: Text(
             rtl ? 'اضغط على البطاقة لرؤية التفاصيل' : 'Tap card to see full profile & reviews',
-            style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.35)),
+            style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.35)),
           ),
         ),
       ]),
@@ -506,7 +506,7 @@ class _PayBadge extends StatelessWidget {
     decoration: BoxDecoration(
       color: purple ? const Color(0xFFEDE9FE) : Theme.of(context).colorScheme.surfaceContainerHighest,
       borderRadius: BorderRadius.circular(6),
-      border: Border.all(color: purple ? const Color(0xFFC4B5FD) : Theme.of(context).colorScheme.onSurface.withOpacity(0.1)),
+      border: Border.all(color: purple ? const Color(0xFFC4B5FD) : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1)),
     ),
     child: Text(label, style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.w700,
       color: purple ? const Color(0xFF7C3AED) : null)),
@@ -521,10 +521,10 @@ class _Meta extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Row(mainAxisSize: MainAxisSize.min, children: [
-    Icon(icon, size: 13, color: color ?? Theme.of(context).colorScheme.onSurface.withOpacity(0.4)),
+    Icon(icon, size: 13, color: color ?? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4)),
     const SizedBox(width: 4),
     Text(text, style: GoogleFonts.cairo(fontSize: 13,
-      color: color ?? Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+      color: color ?? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
       fontWeight: color != null ? FontWeight.w700 : FontWeight.w400)),
   ]);
 }

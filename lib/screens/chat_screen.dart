@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -81,7 +80,7 @@ class _SupportBtn extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 12),
       child: RqwstCard(
         onTap: () => _openSupport(context, s),
-        background: RqwstColors.invert.withOpacity(0.05),
+        background: RqwstColors.invert.withValues(alpha: 0.05),
         padding: const EdgeInsets.all(13),
         child: Row(children: [
           Container(width: 40, height: 40, decoration: const BoxDecoration(color: RqwstColors.invert, shape: BoxShape.circle),
@@ -91,9 +90,9 @@ class _SupportBtn extends StatelessWidget {
             Text(rtl ? 'تواصل مع الدعم' : 'Contact Support',
               style: GoogleFonts.cairo(fontSize: 14, fontWeight: FontWeight.w800, color: RqwstColors.invert)),
             Text(rtl ? 'بلّغ عن مشكلة أو اسأل سؤال' : 'Report a problem or ask a question',
-              style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+              style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
           ])),
-          Icon(Icons.chevron_right, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3)),
+          Icon(Icons.chevron_right, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3)),
         ]),
       ),
     );
@@ -123,7 +122,7 @@ class _ThreadTile extends StatelessWidget {
         ? (rtl ? '🎙️ رسالة صوتية' : '🎙️ Voice note')
         : (thread.lastMessage ?? thread.requestDescription ?? '');
 
-    Color avatarBg = thread.isRequester ? RqwstColors.brand : RqwstColors.invert.withOpacity(0.85);
+    Color avatarBg = thread.isRequester ? RqwstColors.brand : RqwstColors.invert.withValues(alpha: 0.85);
     if (thread.isSupport) avatarBg = RqwstColors.invert;
 
     return RqwstCard(
@@ -166,7 +165,7 @@ class _ThreadTile extends StatelessWidget {
           const SizedBox(height: 3),
           Row(children: [
             Expanded(child: Text(preview,
-              style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
+              style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5)),
               overflow: TextOverflow.ellipsis)),
             if (thread.finalPrice != null)
               Text('${thread.finalPrice} ${rtl ? 'ج' : 'EGP'}',
@@ -174,7 +173,7 @@ class _ThreadTile extends StatelessWidget {
           ]),
         ])),
         const SizedBox(width: 8),
-        Icon(Icons.chevron_right, size: 16, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3)),
+        Icon(Icons.chevron_right, size: 16, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3)),
       ]),
     );
   }
@@ -259,7 +258,7 @@ class _SupportSheetState extends State<_SupportSheet> {
       ),
       child: Column(children: [
         Center(child: Container(width: 40, height: 4, margin: const EdgeInsets.only(top: 12),
-          decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+          decoration: BoxDecoration(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(2)))),
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 14, 16, 10),
@@ -270,7 +269,7 @@ class _SupportSheetState extends State<_SupportSheet> {
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(rtl ? 'الدعم الفني' : 'Support', style: GoogleFonts.cairo(fontSize: 16, fontWeight: FontWeight.w900)),
               Text(rtl ? 'فريقنا هنا يساعدك' : 'Our team is here to help',
-                style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+                style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
             ]),
           ]),
         ),
@@ -278,7 +277,7 @@ class _SupportSheetState extends State<_SupportSheet> {
             ? const Center(child: CircularProgressIndicator(color: RqwstColors.invert))
             : _msgs.isEmpty
                 ? Center(child: Text(rtl ? 'ابعت رسالتك وهنرد عليك في أقرب وقت' : 'Send your message and we will reply soon',
-                    style: GoogleFonts.cairo(fontSize: 13, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4)),
+                    style: GoogleFonts.cairo(fontSize: 13, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4)),
                     textAlign: TextAlign.center))
                 : ListView.builder(
                     controller: _scroll,
@@ -315,8 +314,8 @@ class _SupportSheetState extends State<_SupportSheet> {
                                   ? (m['created_at'] as String).substring(11, 16) : '',
                                 style: GoogleFonts.cairo(fontSize: 10,
                                   color: isAdmin
-                                      ? Theme.of(context).colorScheme.onSurface.withOpacity(0.4)
-                                      : Colors.white.withOpacity(0.55))),
+                                      ? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4)
+                                      : Colors.white.withValues(alpha: 0.55))),
                             ]),
                           ),
                         ),
@@ -341,7 +340,7 @@ class _SupportSheetState extends State<_SupportSheet> {
           padding: EdgeInsets.fromLTRB(12, 8, 12, 12 + MediaQuery.of(context).padding.bottom),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surface,
-            border: Border(top: BorderSide(color: Theme.of(context).dividerColor.withOpacity(0.3))),
+            border: Border(top: BorderSide(color: Theme.of(context).dividerColor.withValues(alpha: 0.3))),
           ),
           child: Row(children: [
             Expanded(child: TextField(
@@ -621,7 +620,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
     final rtl = s.isRTL;
 
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.scaffoldBackgroundColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Column(children: [
         // ── Header ────────────────────────────────────────────────────────────
         _ChatHeader(
@@ -666,7 +665,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
         if (!_call.active)
           Expanded(child: _msgs.isEmpty
               ? Center(child: Text(rtl ? 'ابعت أول رسالة!' : 'Send the first message!',
-                  style: GoogleFonts.cairo(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4))))
+                  style: GoogleFonts.cairo(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4))))
               : ListView.builder(
                   controller: _scroll,
                   padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
@@ -735,7 +734,7 @@ class _ChatHeader extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(4, 8, 12, 8),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surface,
-          border: Border(bottom: BorderSide(color: Theme.of(context).dividerColor.withOpacity(0.3))),
+          border: Border(bottom: BorderSide(color: Theme.of(context).dividerColor.withValues(alpha: 0.3))),
         ),
         child: Row(children: [
           // Back
@@ -750,7 +749,7 @@ class _ChatHeader extends StatelessWidget {
                 Flexible(child: Text((summary!['description'] as String).substring(0,
                     (summary!['description'] as String).length.clamp(0, 40)),
                   style: GoogleFonts.cairo(fontSize: 11,
-                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5)),
                   overflow: TextOverflow.ellipsis)),
                 if (isDone) ...[
                   const SizedBox(width: 6),
@@ -769,9 +768,9 @@ class _ChatHeader extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                 decoration: BoxDecoration(
-                  color: RqwstColors.brand.withOpacity(0.1),
+                  color: RqwstColors.brand.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: RqwstColors.brand.withOpacity(0.25)),
+                  border: Border.all(color: RqwstColors.brand.withValues(alpha: 0.25)),
                 ),
                 child: Column(children: [
                   const Icon(Icons.call, color: RqwstColors.brand, size: 17),
@@ -790,9 +789,9 @@ class _ChatHeader extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
                 decoration: BoxDecoration(
-                  color: RqwstColors.invert.withOpacity(0.1),
+                  color: RqwstColors.invert.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: RqwstColors.invert.withOpacity(0.25)),
+                  border: Border.all(color: RqwstColors.invert.withValues(alpha: 0.25)),
                 ),
                 child: Column(children: [
                   const Icon(Icons.check, color: RqwstColors.invert, size: 17),
@@ -840,7 +839,7 @@ class _DeliveryStatusBar extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(14, 10, 14, 12),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainerHighest,
-        border: Border(bottom: BorderSide(color: Theme.of(context).dividerColor.withOpacity(0.3))),
+        border: Border(bottom: BorderSide(color: Theme.of(context).dividerColor.withValues(alpha: 0.3))),
       ),
       child: Column(children: [
         // Route line
@@ -870,22 +869,22 @@ class _DeliveryStatusBar extends StatelessWidget {
                 duration: const Duration(milliseconds: 200),
                 padding: const EdgeInsets.symmetric(vertical: 6),
                 decoration: BoxDecoration(
-                  color: _isReached(deliveryStatus, _stages[i].id) ? RqwstColors.brand : RqwstColors.brandL.withOpacity(0.3),
+                  color: _isReached(deliveryStatus, _stages[i].id) ? RqwstColors.brand : RqwstColors.brandL.withValues(alpha: 0.3),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    color: deliveryStatus == _stages[i].id ? RqwstColors.brand : RqwstColors.brand.withOpacity(0.2)),
+                    color: deliveryStatus == _stages[i].id ? RqwstColors.brand : RqwstColors.brand.withValues(alpha: 0.2)),
                 ),
                 child: Column(children: [
                   Text(_stages[i].icon, style: const TextStyle(fontSize: 14)),
                   Text(_stages[i].label, style: GoogleFonts.cairo(fontSize: 9, fontWeight: FontWeight.w800,
-                    color: _isReached(deliveryStatus, _stages[i].id) ? Colors.white : RqwstColors.brand.withOpacity(0.6)),
+                    color: _isReached(deliveryStatus, _stages[i].id) ? Colors.white : RqwstColors.brand.withValues(alpha: 0.6)),
                     textAlign: TextAlign.center),
                 ]),
               ),
             )),
             if (i < 2)
               Container(width: 12, height: 2, margin: const EdgeInsets.symmetric(horizontal: 2),
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1)),
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1)),
           ],
         ]),
       ]),
@@ -917,8 +916,8 @@ class _CallOverlay extends StatelessWidget {
         // Avatar
         Container(width: 90, height: 90,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.12), shape: BoxShape.circle,
-            border: Border.all(color: Colors.white.withOpacity(0.2), width: 2)),
+            color: Colors.white.withValues(alpha: 0.12), shape: BoxShape.circle,
+            border: Border.all(color: Colors.white.withValues(alpha: 0.2), width: 2)),
           child: const Icon(Icons.person, color: Colors.white70, size: 44)),
         const SizedBox(height: 14),
 
@@ -926,15 +925,15 @@ class _CallOverlay extends StatelessWidget {
         if (call.ringing && !call.inCall)
           Text(rtl ? 'مكالمة واردة من' : 'INCOMING FROM',
             style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700,
-              color: Colors.white.withOpacity(0.5), letterSpacing: 0.5)),
+              color: Colors.white.withValues(alpha: 0.5), letterSpacing: 0.5)),
         if (call.outgoing && !call.inCall)
           Text(rtl ? 'جاري الاتصال بـ' : 'CALLING',
             style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700,
-              color: Colors.white.withOpacity(0.5), letterSpacing: 0.5)),
+              color: Colors.white.withValues(alpha: 0.5), letterSpacing: 0.5)),
         if (call.inCall)
           Text(rtl ? 'متصل' : 'CONNECTED',
             style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700,
-              color: RqwstColors.brand.withOpacity(0.8))),
+              color: RqwstColors.brand.withValues(alpha: 0.8))),
         const SizedBox(height: 6),
 
         // Peer name
@@ -945,20 +944,20 @@ class _CallOverlay extends StatelessWidget {
         if (call.outgoing && !call.inCall)
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             SizedBox(width: 12, height: 12, child: CircularProgressIndicator(
-              color: Colors.white.withOpacity(0.7), strokeWidth: 2)),
+              color: Colors.white.withValues(alpha: 0.7), strokeWidth: 2)),
             const SizedBox(width: 8),
             Text(rtl ? 'في انتظار الرد…' : 'Waiting for answer…',
-              style: GoogleFonts.cairo(fontSize: 13, color: Colors.white.withOpacity(0.5))),
+              style: GoogleFonts.cairo(fontSize: 13, color: Colors.white.withValues(alpha: 0.5))),
           ]),
         if (call.ringing && !call.inCall)
           Text(rtl ? 'يتصل بك…' : 'is calling you…',
-            style: GoogleFonts.cairo(fontSize: 13, color: Colors.white.withOpacity(0.6))),
+            style: GoogleFonts.cairo(fontSize: 13, color: Colors.white.withValues(alpha: 0.6))),
         if (call.inCall)
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Container(width: 8, height: 8, decoration: const BoxDecoration(color: RqwstColors.brand, shape: BoxShape.circle)),
             const SizedBox(width: 8),
             Text(CallService.fmtDur(call.duration),
-              style: GoogleFonts.cairo(fontSize: 16, fontWeight: FontWeight.w700, color: RqwstColors.brand.withOpacity(0.9))),
+              style: GoogleFonts.cairo(fontSize: 16, fontWeight: FontWeight.w700, color: RqwstColors.brand.withValues(alpha: 0.9))),
           ]),
 
         const SizedBox(height: 40),
@@ -977,14 +976,14 @@ class _CallOverlay extends StatelessWidget {
             Column(children: [
               _CallBtn(
                 icon: call.loudspeaker ? Icons.volume_up : Icons.volume_down,
-                color: Colors.white.withOpacity(call.loudspeaker ? 0.25 : 0.1),
+                color: Colors.white.withValues(alpha: call.loudspeaker ? 0.25 : 0.1),
                 size: 56,
                 onTap: CallService.toggleSpeaker,
                 border: true,
               ),
               const SizedBox(height: 6),
               Text(call.loudspeaker ? (rtl ? 'سماعة عالية' : 'Speaker') : (rtl ? 'سماعة عادية' : 'Earpiece'),
-                style: GoogleFonts.cairo(fontSize: 10, color: Colors.white.withOpacity(0.5))),
+                style: GoogleFonts.cairo(fontSize: 10, color: Colors.white.withValues(alpha: 0.5))),
             ]),
             const SizedBox(width: 24),
             // End call
@@ -992,7 +991,7 @@ class _CallOverlay extends StatelessWidget {
               _CallBtn(icon: Icons.call_end, color: RqwstColors.rose, size: 66,
                 onTap: () => CallService.endCall(threadId)),
               const SizedBox(height: 6),
-              Text(s.t('endCall'), style: GoogleFonts.cairo(fontSize: 10, color: Colors.white.withOpacity(0.5))),
+              Text(s.t('endCall'), style: GoogleFonts.cairo(fontSize: 10, color: Colors.white.withValues(alpha: 0.5))),
             ]),
           ],
         ]),
@@ -1017,8 +1016,8 @@ class _CallBtn extends StatelessWidget {
       width: size, height: size,
       decoration: BoxDecoration(
         color: color, shape: BoxShape.circle,
-        border: border ? Border.all(color: Colors.white.withOpacity(0.2), width: 1.5) : null,
-        boxShadow: [BoxShadow(color: color.withOpacity(0.4), blurRadius: pulse ? 24 : 16)],
+        border: border ? Border.all(color: Colors.white.withValues(alpha: 0.2), width: 1.5) : null,
+        boxShadow: [BoxShadow(color: color.withValues(alpha: 0.4), blurRadius: pulse ? 24 : 16)],
       ),
       child: Icon(icon, color: Colors.white, size: size * 0.4),
     ),
@@ -1048,9 +1047,9 @@ class _RequestSummaryCard extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(14, 10, 14, 0),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [RqwstColors.brandL, RqwstColors.invert.withOpacity(0.04)]),
+        gradient: LinearGradient(colors: [RqwstColors.brandL, RqwstColors.invert.withValues(alpha: 0.04)]),
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: RqwstColors.brand.withOpacity(0.2)),
+        border: Border.all(color: RqwstColors.brand.withValues(alpha: 0.2)),
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(children: [
@@ -1069,7 +1068,7 @@ class _RequestSummaryCard extends StatelessWidget {
           if (summary['area'] != null) ...[
             const SizedBox(width: 12),
             Text('📍 ${summary['area']}',
-              style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+              style: GoogleFonts.cairo(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
           ],
           if (statusLabel.isNotEmpty) ...[
             const SizedBox(width: 12),
@@ -1135,7 +1134,7 @@ class _MsgBubble extends StatelessWidget {
           child: Column(mainAxisSize: MainAxisSize.min, children: [
             Text(sysText, style: GoogleFonts.cairo(
               fontSize: 12, fontWeight: FontWeight.w700,
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6)),
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6)),
               textAlign: TextAlign.center),
             if (sysAction != null) sysAction,
           ]),
@@ -1165,7 +1164,6 @@ class _MsgBubble extends StatelessWidget {
     }
 
     // Timestamp
-    final time = msg.body.isNotEmpty ? '' : '';
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 6),
@@ -1175,7 +1173,7 @@ class _MsgBubble extends StatelessWidget {
         children: [
           if (!mine) ...[
             Container(width: 28, height: 28, decoration: BoxDecoration(
-              color: RqwstColors.invert.withOpacity(0.7), shape: BoxShape.circle),
+              color: RqwstColors.invert.withValues(alpha: 0.7), shape: BoxShape.circle),
               child: const Icon(Icons.person, color: Colors.white, size: 14)),
             const SizedBox(width: 6),
           ],
@@ -1260,14 +1258,14 @@ class _LocationBubble extends StatelessWidget {
     child: Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: mine ? Colors.white.withOpacity(0.15) : RqwstColors.brandL,
+        color: mine ? Colors.white.withValues(alpha: 0.15) : RqwstColors.brandL,
         borderRadius: BorderRadius.circular(10),
-        border: mine ? null : Border.all(color: RqwstColors.brand.withOpacity(0.25)),
+        border: mine ? null : Border.all(color: RqwstColors.brand.withValues(alpha: 0.25)),
       ),
       child: Row(mainAxisSize: MainAxisSize.min, children: [
         Container(width: 34, height: 34,
           decoration: BoxDecoration(
-            color: mine ? Colors.white.withOpacity(0.2) : RqwstColors.brand,
+            color: mine ? Colors.white.withValues(alpha: 0.2) : RqwstColors.brand,
             shape: BoxShape.circle),
           child: Icon(Icons.location_on, color: Colors.white, size: 18)),
         const SizedBox(width: 10),
@@ -1276,7 +1274,7 @@ class _LocationBubble extends StatelessWidget {
             style: GoogleFonts.cairo(fontSize: 13, fontWeight: FontWeight.w700,
               color: mine ? Colors.white : null)),
           Text(rtl ? 'اضغط لفتح الخريطة' : 'Tap to open maps',
-            style: GoogleFonts.cairo(fontSize: 11, color: mine ? Colors.white70 : Theme.of(context).colorScheme.onSurface.withOpacity(0.5))),
+            style: GoogleFonts.cairo(fontSize: 11, color: mine ? Colors.white70 : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
         ]),
         const SizedBox(width: 10),
         Icon(Icons.open_in_new, size: 14, color: mine ? Colors.white70 : RqwstColors.brand),
@@ -1298,7 +1296,7 @@ class _VoicePreviewBar extends StatelessWidget {
     padding: const EdgeInsets.fromLTRB(14, 8, 14, 8),
     decoration: BoxDecoration(
       color: Theme.of(context).colorScheme.surface,
-      border: Border(top: BorderSide(color: Theme.of(context).dividerColor.withOpacity(0.3))),
+      border: Border(top: BorderSide(color: Theme.of(context).dividerColor.withValues(alpha: 0.3))),
     ),
     child: Row(children: [
       // Play button
@@ -1349,8 +1347,8 @@ class _RecordingBar extends StatelessWidget {
   Widget build(BuildContext context) => Container(
     padding: const EdgeInsets.fromLTRB(14, 9, 14, 9),
     decoration: BoxDecoration(
-      color: RqwstColors.rose.withOpacity(0.05),
-      border: Border(top: BorderSide(color: RqwstColors.rose.withOpacity(0.2))),
+      color: RqwstColors.rose.withValues(alpha: 0.05),
+      border: Border(top: BorderSide(color: RqwstColors.rose.withValues(alpha: 0.2))),
     ),
     child: Row(children: [
       Container(width: 8, height: 8,
@@ -1362,7 +1360,7 @@ class _RecordingBar extends StatelessWidget {
         borderRadius: BorderRadius.circular(2),
         child: LinearProgressIndicator(
           value: (recSec / 120).clamp(0.0, 1.0),
-          backgroundColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
+          backgroundColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1),
           valueColor: const AlwaysStoppedAnimation(RqwstColors.rose),
           minHeight: 3),
       )),
@@ -1392,9 +1390,9 @@ class _ClosedBanner extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 11),
       decoration: BoxDecoration(
-        color: isCompleted ? RqwstColors.brand.withOpacity(0.08) : Theme.of(context).colorScheme.surfaceContainerHighest,
+        color: isCompleted ? RqwstColors.brand.withValues(alpha: 0.08) : Theme.of(context).colorScheme.surfaceContainerHighest,
         border: Border(top: BorderSide(
-          color: isCompleted ? RqwstColors.brand.withOpacity(0.2) : Theme.of(context).dividerColor.withOpacity(0.3))),
+          color: isCompleted ? RqwstColors.brand.withValues(alpha: 0.2) : Theme.of(context).dividerColor.withValues(alpha: 0.3))),
       ),
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         Text(isCompleted ? '🎉' : '🔒', style: const TextStyle(fontSize: 16)),
@@ -1405,9 +1403,9 @@ class _ClosedBanner extends StatelessWidget {
                 ? (rtl ? 'اكتمل الطلب بنجاح' : 'Request completed')
                 : (rtl ? 'المحادثة اتقفلت' : 'Chat closed'),
             style: GoogleFonts.cairo(fontSize: 13, fontWeight: FontWeight.w800,
-              color: isCompleted ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withOpacity(0.7))),
+              color: isCompleted ? RqwstColors.brand : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
           Text(rtl ? 'مش ممكن ترسل رسائل جديدة' : 'No new messages can be sent',
-            style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4))),
+            style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4))),
         ]),
       ]),
     );
@@ -1428,7 +1426,7 @@ class _InputBar extends StatelessWidget {
     padding: EdgeInsets.fromLTRB(8, 8, 8, 8 + MediaQuery.of(context).padding.bottom),
     decoration: BoxDecoration(
       color: Theme.of(context).colorScheme.surface,
-      border: Border(top: BorderSide(color: Theme.of(context).dividerColor.withOpacity(0.3))),
+      border: Border(top: BorderSide(color: Theme.of(context).dividerColor.withValues(alpha: 0.3))),
     ),
     child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
       // Image
@@ -1491,9 +1489,9 @@ class _IconBtn extends StatelessWidget {
     child: Container(
       width: 36, height: 36,
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onSurface.withOpacity(0.06),
+        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.06),
         borderRadius: BorderRadius.circular(10)),
-      child: Icon(icon, size: 18, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5)),
+      child: Icon(icon, size: 18, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5)),
     ),
   );
 }

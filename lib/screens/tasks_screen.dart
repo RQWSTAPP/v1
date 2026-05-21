@@ -83,7 +83,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(colors: [Color(0xFF0D2A1A), Color(0xFF0A1628)]),
                     borderRadius: BorderRadius.circular(16),
-                    boxShadow: [BoxShadow(color: RqwstColors.brand.withOpacity(0.25), blurRadius: 16)],
+                    boxShadow: [BoxShadow(color: RqwstColors.brand.withValues(alpha: 0.25), blurRadius: 16)],
                   ),
                   child: Row(children: [
                     Container(width: 10, height: 10,
@@ -157,7 +157,7 @@ class _Btn extends StatelessWidget {
     decoration: BoxDecoration(color: active ? color : Colors.transparent, borderRadius: BorderRadius.circular(10)),
     child: Text(label, textAlign: TextAlign.center,
       style: GoogleFonts.cairo(fontSize: 13, fontWeight: FontWeight.w700,
-        color: active ? Colors.white : Theme.of(ctx).colorScheme.onSurface.withOpacity(0.5))),
+        color: active ? Colors.white : Theme.of(ctx).colorScheme.onSurface.withValues(alpha: 0.5))),
   )));
 }
 
@@ -185,7 +185,7 @@ class _AvailToggle extends StatelessWidget {
           const SizedBox(width: 6),
           Text(on ? s.t('available') : s.t('unavailable'),
             style: GoogleFonts.cairo(fontSize: 12, fontWeight: FontWeight.w700,
-              color: on ? Colors.white : Theme.of(context).colorScheme.onSurface.withOpacity(0.6))),
+              color: on ? Colors.white : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6))),
         ]),
       ),
     );
@@ -298,10 +298,10 @@ class _Meta extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Row(mainAxisSize: MainAxisSize.min, children: [
-    Icon(icon, size: 11, color: color ?? Theme.of(context).colorScheme.onSurface.withOpacity(0.4)),
+    Icon(icon, size: 11, color: color ?? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.4)),
     const SizedBox(width: 3),
     Text(text, style: GoogleFonts.cairo(fontSize: 12,
-      color: color ?? Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+      color: color ?? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
       fontWeight: color != null ? FontWeight.w700 : FontWeight.w400)),
   ]);
 }
@@ -351,12 +351,12 @@ class _ProviderFeed extends StatelessWidget {
         // Warnings
         if (s.feedBusy)
           WarningBanner(text: s.t('alreadyActive'), color: RqwstColors.amberL,
-            borderColor: RqwstColors.amber.withOpacity(0.25)),
+            borderColor: RqwstColors.amber.withValues(alpha: 0.25)),
         if (s.providerAvailable == 0)
           WarningBanner(
             text: s.t('providerAvailableHint'),
             color: RqwstColors.roseL,
-            borderColor: RqwstColors.rose.withOpacity(0.2),
+            borderColor: RqwstColors.rose.withValues(alpha: 0.2),
             trailing: TextButton(
               onPressed: s.toggleAvail,
               child: Text(s.t('available'), style: GoogleFonts.cairo(color: RqwstColors.brand, fontSize: 12, fontWeight: FontWeight.w700)),
