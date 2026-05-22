@@ -997,6 +997,9 @@ class AppState extends ChangeNotifier {
     });
   }
 
+  /// Public wrapper so widgets can trigger rebuild after direct field mutation
+  void notifyListenersPublic() => notifyListeners();
+
   @override
   void dispose() {
     _toastTimer?.cancel();
@@ -1174,10 +1177,8 @@ class LocationService {
 
     try {
       return await Geolocator.getCurrentPosition(
-        locationSettings: LocationSettings(
-          accuracy: highAccuracy ? LocationAccuracy.high : LocationAccuracy.medium,
-          timeLimit: const Duration(seconds: 10),
-        ),
+        desiredAccuracy: highAccuracy ? LocationAccuracy.high : LocationAccuracy.medium,
+        timeLimit: const Duration(seconds: 10),
       );
     } catch (_) {
       return null;
@@ -1364,8 +1365,7 @@ class VoiceService {
         encoder: AudioEncoder.aacLc,  // m4a — works on both iOS and Android
         sampleRate: 44100,
         bitRate: 64000,
-        noiseCancel: true,
-        echoCancel: true,
+        // noiseCancel and echoCancel removed in record 5.x
       ),
       path: _recordingPath!,
     );
@@ -1526,9 +1526,7 @@ class CallService {
       if (event.streams.isNotEmpty) {
         state.remoteStream = event.streams[0];
       } else {
-        state.remoteStream ??= event.track.kind == 'audio'
-            ? MediaStream('remote', 'remote')
-            : null;
+        // MediaStream is abstract - skip manual creation, track added below
         state.remoteStream?.addTrack(event.track);
       }
       onStateChanged?.call();
@@ -1891,14 +1889,16 @@ class VoiceRouteService {
     onStateChanged?.call();
 
     await _speech.listen(
-      localeId: 'ar_EG',   // ar-EG — same as original _voiceRecog.lang='ar-EG'
-      listenMode: ListenMode.confirmation,
       onResult: (r) {
         transcript = r.recognizedWords;
         onStateChanged?.call();
       },
-      cancelOnError: false,
-      partialResults: true,
+      listenOptions: SpeechListenOptions(
+        localeId: 'ar_EG',
+        listenMode: ListenMode.confirmation,
+        cancelOnError: false,
+        partialResults: true,
+      ),
     );
   }
 
@@ -6771,8 +6771,8 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
   // ── Complete request ───────────────────────────────────────────────────────
   Future<void> _complete() async {
     final s = context.read<AppState>();
-    final rid = _summary?['id'] as int? ?? widget.requestId;
-    if (rid == null) return;
+    final reqId = _summary?['id'] as int? ?? widget.requestId;
+    if (reqId == null) return;
     final rtl = s.isRTL;
     final ok = await showDialog<bool>(context: context, builder: (_) => AlertDialog(
       title: Text(rtl ? 'الطلب خلص؟' : 'Request complete?', style: GoogleFonts.cairo(fontWeight: FontWeight.w900)),
@@ -6787,7 +6787,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
     if (ok != true || !mounted) return;
     try {
       final myId = s.user?.id ?? 0;
-      final j = await ApiService.call('requests.complete', {'request_id': rid});
+      final j = await ApiService.call('requests.complete', {'request_id': reqId});
       await s.loadMyReqs();
       _toast(s.t('reqCompleted'));
       await _fetch();
@@ -6797,15 +6797,15 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
       if (mounted && myId == requesterId && providerId != null && providerId != myId) {
         showModalBottomSheet(context: context, isScrollControlled: true, backgroundColor: Colors.transparent,
           builder: (_) => ChangeNotifierProvider.value(value: s,
-            child: RatingSheet(requestId: rid, toUserId: providerId)));
+            child: RatingSheet(requestId: reqId, toUserId: providerId)));
       }
     } catch (_) {}
   }
 
   // ── Delivery status update ─────────────────────────────────────────────────
   Future<void> _updateDeliveryStatus(String status) async {
-    final rid = _summary?['id'] as int? ?? widget.requestId;
-    if (rid == null) return;
+    final reqId = _summary?['id'] as int? ?? widget.requestId;
+    if (reqId == null) return;
     try {
       await ApiService.call('requests.update_delivery_status', {'request_id': rid, 'delivery_status': status});
       await _fetch();
@@ -7986,7 +7986,7 @@ class _ReqCard extends StatelessWidget {
             Navigator.push(context, MaterialPageRoute(
               builder: (_) => ChangeNotifierProvider.value(
                 value: s,
-                child: chat_screen.ChatDetailScreen(threadId: req.threadId!, requestId: req.id, peerName: ''),
+                child: ChatDetailScreen(threadId: req.threadId!, requestId: req.id, peerName: ''),
               ),
             ));
           }),
@@ -8527,7 +8527,7 @@ class _VehicleCard extends StatelessWidget {
               style: GoogleFonts.cairo(fontSize: 11, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5))),
           ])),
           // Toggle
-          _Toggle(value: s.vehicleDeliveryEnabled, onTap: () { s.vehicleDeliveryEnabled = !s.vehicleDeliveryEnabled; s.notifyListeners(); }),
+          _Toggle(value: s.vehicleDeliveryEnabled, onTap: () { s.vehicleDeliveryEnabled = !s.vehicleDeliveryEnabled; (s as AppState).notifyListenersPublic(); }),
         ]),
       ),
       const SizedBox(height: 14),
@@ -8541,7 +8541,7 @@ class _VehicleCard extends StatelessWidget {
           Expanded(child: Padding(
             padding: EdgeInsets.only(right: vt.$1 == 'car' ? 6 : 0),
             child: _VehicleTypeBtn(id: vt.$1, icon: vt.$2, label: vt.$3, selected: s.vehicleType == vt.$1,
-              onTap: () { s.vehicleType = vt.$1; s.notifyListeners(); }),
+              onTap: () { s.vehicleType = vt.$1; (s as AppState).notifyListenersPublic(); }),
           )),
       ]),
       const SizedBox(height: 16),
@@ -8554,7 +8554,7 @@ class _VehicleCard extends StatelessWidget {
         value: s.vehicleMake.isEmpty ? null : s.vehicleMake,
         items: ['Toyota','Hyundai','Kia','Nissan','Mitsubishi','Suzuki','Honda','Chevrolet','Lada','Bajaj','TVS','Lifan','Daewoo','MG','BYD']
             .map((m) => DropdownMenuItem(value: m, child: Text(m, style: GoogleFonts.cairo()))).toList(),
-        onChanged: (v) { s.vehicleMake = v ?? ''; s.vehicleModel = ''; s.notifyListeners(); },
+        onChanged: (v) { s.vehicleMake = v ?? ''; s.vehicleModel = ''; (s as AppState).notifyListenersPublic(); },
         hint: Text(rtl ? '-- اختار الماركة --' : '-- Select Make --', style: GoogleFonts.cairo()),
         style: GoogleFonts.cairo(),
       ),
