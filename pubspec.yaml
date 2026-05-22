@@ -9,52 +9,24 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  # HTTP
   http: ^1.2.0
-
-  # State management
   provider: ^6.1.2
-
-  # Local storage
   shared_preferences: ^2.2.3
-
-  # Image picker (avatar, vehicle photos, ID docs)
   image_picker: ^1.1.2
-
-  # Audio recording + playback (voice notes)
   record: ^5.1.2
   audioplayers: ^6.0.0
   path_provider: ^2.1.4
-
-  # Push notifications
   firebase_core: ^3.3.0
   firebase_messaging: ^15.1.0
   flutter_local_notifications: ^17.2.2
-
-  # WebRTC voice calls
   flutter_webrtc: ^0.11.7
-
-  # Geolocation
   geolocator: ^12.0.0
   permission_handler: ^11.3.1
-
-  # Google Maps (delivery map)
   google_maps_flutter: ^2.9.0
-
-  # Speech recognition (voice route AI)
   speech_to_text: ^7.0.0
-
-  # File picker (ID documents / PDFs)
   file_picker: ^8.1.2
-
-  # URL launcher (location bubbles → Google Maps, image links)
   url_launcher: ^6.3.1
-
-  # Fonts
   google_fonts: ^6.2.1
-
-  # Intl
   intl: ^0.19.0
 
 dev_dependencies:
